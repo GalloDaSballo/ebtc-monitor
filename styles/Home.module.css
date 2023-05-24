@@ -6,7 +6,12 @@
   padding: 6rem;
   min-height: 100vh;
 }
-
+.pre {
+  font-family: monospace;
+  padding: 25px;
+  border: 1px solid #fff;
+  margin-bottom: 33px;
+}
 .description {
   display: inherit;
   justify-content: inherit;
