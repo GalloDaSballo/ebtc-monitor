@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import getPoolData from "../lib/fetcher";
-import computeLiquidationData, { LiquidationData } from "@/lib/liquidation";
+import computeLiquidationData, { LiquidationData, PoolData } from "@/lib/liquidation";
 import styles from "../styles/Home.module.css"
 
 const CURVE_TYPE = "Curve";
@@ -16,7 +16,7 @@ const PoolChecker: React.FC<any> = ({
   const [poolAddress, setPoolAddress] = useState("");
   const [balancerPoolId, setBalancerPoolId] = useState("");
   const [dataDump, setDatadump] = useState("");
-  const [poolData, setPoolData] = useState(null)
+  const [poolData, setPoolData] = useState<null | PoolData>(null)
 
   const [toSell, setToSell] = useState(1e21)
   const [liquidationPremium, setLiquidationPremium] = useState(300)
@@ -36,8 +36,10 @@ const PoolChecker: React.FC<any> = ({
     setIsLoadingPool(false);
   }, [balancerPoolId, poolAddress, poolType]);
 
-  const data: LiquidationData = useMemo(
+  const data: LiquidationData | null = useMemo(
+    // We know it's defined
     () =>
+    // @ts-ignore
       poolData != null ? computeLiquidationData(toSell, liquidationPremium, 18, {...poolData, timeForReplenishment: secondsForPoolRefill}) : null,
     [toSell, liquidationPremium, 18, poolData, secondsForPoolRefill]
   );

@@ -63,9 +63,9 @@ interface ExtraSettings {
       timeForReplenishment: 60 * 60 * 24,
     }
     const extraSettingsFixed = {
-      customA: parseInt(poolData.poolExtraSettings.customA.toString()),
-      customFees: parseInt(poolData.poolExtraSettings.customFees.toString()),
-      customRates: poolData.poolExtraSettings.customRates.map(rate => parseInt(rate.toString())),
+      customA: poolData?.poolExtraSettings?.customA ? parseInt(poolData?.poolExtraSettings.customA.toString()) : undefined,
+      customFees: poolData?.poolExtraSettings?.customFees ? parseInt(poolData?.poolExtraSettings.customFees.toString()): undefined,
+      customRates: poolData?.poolExtraSettings?.customRates ? poolData?.poolExtraSettings.customRates.map(rate => parseInt(rate.toString())): undefined
     }
     adjustedPoolData = {...adjustedPoolData, poolExtraSettings: {...adjustedPoolData?.poolExtraSettings, ...extraSettingsFixed}}
 
@@ -128,6 +128,7 @@ interface ExtraSettings {
       sellUpTo: 0,
       liquidityMultiple: 1,
       timeToFullLiquidation: 0,
+      // @ts-ignore // It's an exception why so picky?
       error: err.toString(),
     };
   }
