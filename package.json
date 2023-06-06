@@ -15,7 +15,7 @@
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
     "next": "13.4.3",
-    "pool-stat-fetcher": "^1.0.7",
+    "pool-stat-fetcher": "^1.0.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "ts-amm-pool-math": "^1.1.3",

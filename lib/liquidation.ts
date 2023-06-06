@@ -57,29 +57,18 @@ interface ExtraSettings {
   customDecimals?: number[];
 }
      */
-    let adjustedPoolData = {
-      ...poolData,
-      poolReserves: poolData.poolReserves.map(res => parseInt(res.toString())),
-      timeForReplenishment: 60 * 60 * 24,
-    }
-    const extraSettingsFixed = {
-      customA: poolData?.poolExtraSettings?.customA ? parseInt(poolData?.poolExtraSettings.customA.toString()) : undefined,
-      customFees: poolData?.poolExtraSettings?.customFees ? parseInt(poolData?.poolExtraSettings.customFees.toString()): undefined,
-      customRates: poolData?.poolExtraSettings?.customRates ? poolData?.poolExtraSettings.customRates.map(rate => parseInt(rate.toString())): undefined
-    }
-    adjustedPoolData = {...adjustedPoolData, poolExtraSettings: {...adjustedPoolData?.poolExtraSettings, ...extraSettingsFixed}}
 
 
     const getAmountOut = makeAmountOutFunction(
-      adjustedPoolData.poolType,
-      adjustedPoolData.poolReserves,
-      adjustedPoolData.isStable
+      poolData.poolType,
+      poolData.poolReserves,
+      poolData.isStable
       // TODO: Add back exra
     );
 
     const getAmoutOutGivenReserves = makeAmountOutGivenReservesFunction(
-      adjustedPoolData.poolType,
-      adjustedPoolData.isStable
+      poolData.poolType,
+      poolData.isStable
     );
     
     console.log("spotAmountOut")
@@ -103,7 +92,7 @@ interface ExtraSettings {
     const poolReserveMultiplierForLiquidation = getPoolReserveMultiplierToAllowPriceImpactBelow(
       (spotPrice * MAX_BPS) / (MAX_BPS - liquidationPremium),
       amountToDump,
-      adjustedPoolData.poolReserves,
+      poolData.poolReserves,
       getAmoutOutGivenReserves
     );
 
@@ -111,9 +100,9 @@ interface ExtraSettings {
     const discreteTimeForFullLiquidation = getPoolDiscreteRepetitionsUntilFullLiquidatedAmount(
       (spotPrice * MAX_BPS) / (MAX_BPS - liquidationPremium),
       amountToDump,
-      adjustedPoolData.poolReserves,
+      poolData.poolReserves,
       getAmoutOutGivenReserves,
-      adjustedPoolData.timeForReplenishment
+      poolData.timeForReplenishment
     );
     console.log("discreteTimeForFullLiquidation", discreteTimeForFullLiquidation);
 

@@ -2289,10 +2289,10 @@ picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pool-stat-fetcher@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/pool-stat-fetcher/-/pool-stat-fetcher-1.0.7.tgz#096a770cebb8fe0a055a714ede1cd8f5ec9a4bd3"
-  integrity sha512-3/0UPvzIBguhmVNkcWGklrxU/rIky0+lKw6Zmt30REcFHjjD4qhtLC2wZJUWlHNc8+7WWTbne+bw/+aiU4PDuw==
+pool-stat-fetcher@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/pool-stat-fetcher/-/pool-stat-fetcher-1.0.8.tgz#0ff059ce2b394a7c66e58d7e58c56eedc272ad63"
+  integrity sha512-btIRBNBpTmqRmXFOK5F91npZcbV0K3L1dk2Yk19Xrx5RSqQTKouHWtmCEI+uADY31GCEUAETtffkLmTo08uTrg==
   dependencies:
     ethers "^5"
     ts-node "^10.9.1"
