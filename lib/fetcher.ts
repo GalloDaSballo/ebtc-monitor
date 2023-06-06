@@ -4,7 +4,6 @@ import { PoolData } from "./liquidation";
 const MAINNET = 1;
 
 const getPoolData = async (type: string, address: string, poolId = ""): Promise<PoolData> => {
-  console.log("getPoolData");
   const data = await fetchPoolData(
     "https://eth-mainnet.g.alchemy.com/v2/w_eN41lVm3nQmjLXAz4ogqTrQMzEsfGY",
     MAINNET,
@@ -12,8 +11,7 @@ const getPoolData = async (type: string, address: string, poolId = ""): Promise<
     address,
     poolId !== "" ? { poolId } : undefined
   );
-  console.log("data", data);
-
+  
   return data;
 };
 
