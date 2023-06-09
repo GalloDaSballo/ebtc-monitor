@@ -11,7 +11,6 @@ const getPoolData = async (type: string, address: string, poolId = ""): Promise<
     address,
     poolId !== "" ? { poolId } : undefined
   );
-  
   return data;
 };
 
